@@ -64,6 +64,6 @@ public class Account {
 
     @Override
     public String toString() {
-        return String.format("Account{, id='%03d%06d', clientID='%s', balance=0.0}, ", Integer.parseInt(clientID), id, clientID);
+        return String.format("Account{id='%03d%06d', clientID='%s', balance=0.0}", Integer.parseInt(clientID), id, clientID);
     }
 }
