@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
     <bean id="memoryAccountDAO" class="com.timka.solid.bank.MemoryAccountDAO">
     </bean>
@@ -22,13 +23,18 @@
     </bean>
     <bean id="createAccountOperationUI" class="com.timka.solid.bank.CreateAccountOperationUI" abstract="true"/>
     <bean id="cLIUI" class="com.timka.solid.bank.CLIUI" abstract="true"/>
-    <bean id="myCLI" class="com.timka.solid.bank.MyCLI"/>
+
+
+
+    <bean id="myCLI" class="com.timka.solid.bank.MyCLI">
+
+    </bean>
     <bean id="accountBasicCLI" class="com.timka.solid.bank.AccountBasicCLI">
         <constructor-arg ref="myCLI"/>
         <constructor-arg ref="bankCore"/>
         <constructor-arg ref="accountListingServiceImpl"/>
     </bean>
 
-
+    <context:component-scan base-package="com.timka.solid.bank"/>
 
 </beans>

@@ -17,16 +17,17 @@ public class MemoryAccountDAO implements AccountDAO{
 
     @Override
     public List<Account> getClientAccounts(String clientID) {
-        if(accountList.isEmpty()) {
-            System.out.println("[]");
-
-        }
         return accountList;
     }
 
     @Override
     public void createNewAccount(Account account) {
+        if(account == null) {
+            System.out.println("Bank account NOT created");
+            return;
+        }
         accountList.add(account);
+        System.out.println("Bank account created");
     }
 
     @Override

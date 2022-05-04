@@ -1,19 +1,20 @@
 package com.timka.solid.bank;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
 //@Component
-public class MyCLI implements CreateAccountOperationUI {
-    //private Scanner scanner;
-    private String type;
+public class MyCLI implements CLIUI {
+    private Scanner scanner;
 
-//    @Autowired
-//    public MyCLI(Scanner scanner) {
-//        this.scanner = scanner;
-//    }
+
+  //  @Autowired
+    public MyCLI(Scanner scanner) {
+        this.scanner = scanner;
+    }
 
 
     public double requestClientAmount() {
@@ -25,11 +26,9 @@ public class MyCLI implements CreateAccountOperationUI {
         throw new UnsupportedOperationException();
     }
     public AccountType requestAccountType() {
+        String type = scanner.nextLine();
         return new AccountType(type);
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
 
 }

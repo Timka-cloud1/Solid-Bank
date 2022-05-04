@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class SpringProjectApplication {
 
 	public static void main(String[] args) {
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("props.xml");
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConfigClass.class);
 		System.out.print("Welcome to CLI bank service\n" +
 				"Enter operation number:\n" +
 				"1 - show accounts\n" +
@@ -36,9 +36,9 @@ public class SpringProjectApplication {
 				accountBasicCLI.getAccounts("1");
 			}
 			if(answer.equals("2")) {
-				System.out.println("Choose account type");
-				myCLI.setType(scanner.nextLine());
-				myCLI.requestAccountType();
+				System.out.println("Choose account type\n" +
+						"[CHECKING, SAVING, FIXED]");
+
 				accountBasicCLI.createAccountRequest("1");
 			}
 			if(answer.equals("7")) {
