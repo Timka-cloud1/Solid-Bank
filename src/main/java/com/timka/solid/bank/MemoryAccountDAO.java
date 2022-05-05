@@ -10,10 +10,10 @@ import java.util.List;
 public class MemoryAccountDAO implements AccountDAO{
     private List<Account> accountList = new ArrayList<>();
 
-//    @PostConstruct
-//    private void init() {
-//        accountList = new ArrayList<>();
-//    }
+    @PostConstruct
+    private void init() {
+        accountList = new ArrayList<>();
+    }
 
     @Override
     public List<Account> getClientAccounts(String clientID) {

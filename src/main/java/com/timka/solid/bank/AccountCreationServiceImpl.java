@@ -14,7 +14,7 @@ public class AccountCreationServiceImpl implements AccountCreationService {
 
     @Override
     public void create(AccountType accountType, long bankID, String clientID, long accountID) {
-        Account account = new Account(accountType, accountID, clientID, 0.0, true);
+        Account account = new Account(accountType, bankID, accountID, clientID, 0.0, true);
         accountDAO.createNewAccount(account);
     }
 }

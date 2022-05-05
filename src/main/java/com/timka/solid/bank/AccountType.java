@@ -6,8 +6,4 @@ public class AccountType {
     public AccountType(String type) {
         this.type = type;
     }
-
-    public String getType() {
-        return type;
-    }
 }

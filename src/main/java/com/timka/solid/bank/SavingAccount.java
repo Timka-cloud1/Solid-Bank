@@ -1,7 +1,8 @@
 package com.timka.solid.bank;
 
 public class SavingAccount extends AccountWithdraw{
-    public SavingAccount(AccountType accountType, Long id, String clientID, double balance, boolean withdrawAllowed) {
-        super(accountType, id, clientID, balance, withdrawAllowed);
+
+    public SavingAccount(AccountType accountType, Long bankID, Long id, String clientID, double balance, boolean withdrawAllowed) {
+        super(accountType, bankID, id, clientID, balance, withdrawAllowed);
     }
 }

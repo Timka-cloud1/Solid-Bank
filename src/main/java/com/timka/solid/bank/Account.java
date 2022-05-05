@@ -1,20 +1,18 @@
 package com.timka.solid.bank;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-
 public class Account {
 
     private AccountType accountType;
     private Long id;
+    private Long bankID;
     private String clientID;
     private double balance;
     private boolean withdrawAllowed;
 
 
-    public Account(AccountType accountType, Long id, String clientID, double balance, boolean withdrawAllowed) {
+    public Account(AccountType accountType, Long bankID, Long id, String clientID, double balance, boolean withdrawAllowed) {
         this.accountType = accountType;
+        this.bankID = bankID;
         this.id = id;
         this.clientID = clientID;
         this.balance = balance;
@@ -64,6 +62,6 @@ public class Account {
 
     @Override
     public String toString() {
-        return String.format("Account{id='%03d%06d', clientID='%s', balance=0.0}", Integer.parseInt(clientID), id, clientID);
+        return String.format("Account{id='%03d%06d', clientID='%s', balance=0.0}", bankID, id, clientID);
     }
 }

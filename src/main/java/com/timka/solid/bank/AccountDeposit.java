@@ -1,6 +1,9 @@
 package com.timka.solid.bank;
 
 public class AccountDeposit extends Account{
+    public AccountDeposit(AccountType accountType, Long bankID, Long id, String clientID, double balance, boolean withdrawAllowed) {
+        super(accountType, bankID, id, clientID, balance, withdrawAllowed);
+    }
     /**
      * можно только снимать.
      * @param accountType
@@ -9,7 +12,5 @@ public class AccountDeposit extends Account{
      * @param balance
      * @param withdrawAllowed
      */
-    public AccountDeposit(AccountType accountType, Long id, String clientID, double balance, boolean withdrawAllowed) {
-        super(accountType, id, clientID, balance, withdrawAllowed);
-    }
+
 }
