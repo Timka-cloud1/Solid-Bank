@@ -1,8 +1,7 @@
 package com.timka.solid.bank;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
+import com.timka.solid.bank.accounts.Account;
+import com.timka.solid.bank.accounts.AccountType;
 
 import java.util.Scanner;
 
@@ -12,8 +11,8 @@ public class MyCLI implements CLIUI {
 
 
   //  @Autowired
-    public MyCLI(Scanner scanner) {
-        this.scanner = scanner;
+    public MyCLI() {
+        this.scanner = new Scanner(System.in);
     }
 
 
@@ -27,7 +26,13 @@ public class MyCLI implements CLIUI {
     }
     public AccountType requestAccountType() {
         String type = scanner.nextLine();
-        return new AccountType(type);
+        if(!AccountType.CHECKING.toString().equals(type) && !AccountType.SAVING.toString().equals(type) && !AccountType.FIXED.toString().equals(type)) {
+            System.out.println("Bank account NOT created");
+            return null;
+        }
+        return AccountType.valueOf(type);
+
+
     }
 
 

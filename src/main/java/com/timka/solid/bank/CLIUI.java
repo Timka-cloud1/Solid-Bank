@@ -1,4 +1,6 @@
 package com.timka.solid.bank;
 
-public interface CLIUI extends CreateAccountOperationUI{
+import com.timka.solid.bank.creationAcc.CreateAccountOperationUI;
+
+public interface CLIUI extends CreateAccountOperationUI {
 }

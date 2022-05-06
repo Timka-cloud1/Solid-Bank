@@ -1,6 +1,6 @@
-package com.timka.solid.bank;
+package com.timka.solid.bank.accounts;
 
-public class Account {
+public abstract class Account {
 
     private AccountType accountType;
     private Long id;
@@ -62,6 +62,6 @@ public class Account {
 
     @Override
     public String toString() {
-        return String.format("Account{id='%03d%06d', clientID='%s', balance=0.0}", bankID, id, clientID);
+        return String.format("Account{type=%s,id='%03d%06d', clientID='%s', balance=0.0}", accountType, bankID, id, clientID);
     }
 }

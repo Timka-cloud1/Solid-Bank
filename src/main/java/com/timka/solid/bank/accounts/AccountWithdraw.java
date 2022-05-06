@@ -1,4 +1,4 @@
-package com.timka.solid.bank;
+package com.timka.solid.bank.accounts;
 
 public class AccountWithdraw extends Account{
     public AccountWithdraw(AccountType accountType, Long bankID, Long id, String clientID, double balance, boolean withdrawAllowed) {

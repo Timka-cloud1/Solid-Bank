@@ -1,7 +1,9 @@
-package com.timka.solid.bank;
+package com.timka.solid.bank.listingAcc;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import com.timka.solid.bank.inmemory.AccountDAO;
+import com.timka.solid.bank.accounts.Account;
+import com.timka.solid.bank.accounts.AccountType;
+import com.timka.solid.bank.accounts.AccountWithdraw;
 
 import java.util.List;
 

@@ -1,6 +1,8 @@
-package com.timka.solid.bank;
+package com.timka.solid.bank.inmemory;
 
-import org.springframework.stereotype.Component;
+import com.timka.solid.bank.accounts.Account;
+import com.timka.solid.bank.accounts.AccountType;
+import com.timka.solid.bank.accounts.AccountWithdraw;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -22,10 +24,6 @@ public class MemoryAccountDAO implements AccountDAO{
 
     @Override
     public void createNewAccount(Account account) {
-        if(account == null) {
-            System.out.println("Bank account NOT created");
-            return;
-        }
         accountList.add(account);
         System.out.println("Bank account created");
     }

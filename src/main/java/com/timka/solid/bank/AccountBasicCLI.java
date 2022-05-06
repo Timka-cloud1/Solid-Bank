@@ -1,8 +1,10 @@
 package com.timka.solid.bank;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.timka.solid.bank.accounts.Account;
+import com.timka.solid.bank.accounts.AccountType;
+import com.timka.solid.bank.creationAcc.CreateAccountOperationUI;
+import com.timka.solid.bank.listingAcc.AccountListingService;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -22,6 +24,9 @@ public class AccountBasicCLI {
 
     public void createAccountRequest(String clientID) {
         AccountType accountType = createAccountOperationUI.requestAccountType();
+        if(accountType == null) {
+            return;
+        }
         bankCore.createNewAccount(accountType, clientID);
     }
     public void getAccounts(String clientID) {

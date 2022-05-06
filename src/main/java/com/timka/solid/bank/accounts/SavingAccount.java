@@ -1,4 +1,4 @@
-package com.timka.solid.bank;
+package com.timka.solid.bank.accounts;
 
 public class SavingAccount extends AccountWithdraw{
 

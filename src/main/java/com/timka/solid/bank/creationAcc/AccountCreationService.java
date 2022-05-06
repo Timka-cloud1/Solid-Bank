@@ -1,6 +1,6 @@
-package com.timka.solid.bank;
+package com.timka.solid.bank.creationAcc;
 
-import org.springframework.stereotype.Component;
+import com.timka.solid.bank.accounts.AccountType;
 
 //@Component
 public interface AccountCreationService {

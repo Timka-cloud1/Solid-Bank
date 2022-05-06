@@ -1,6 +1,8 @@
-package com.timka.solid.bank;
+package com.timka.solid.bank.listingAcc;
 
-import org.springframework.stereotype.Component;
+import com.timka.solid.bank.accounts.Account;
+import com.timka.solid.bank.accounts.AccountType;
+import com.timka.solid.bank.accounts.AccountWithdraw;
 
 import java.util.List;
 //@Component

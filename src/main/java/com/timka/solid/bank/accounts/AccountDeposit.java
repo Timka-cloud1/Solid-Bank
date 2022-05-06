@@ -1,4 +1,4 @@
-package com.timka.solid.bank;
+package com.timka.solid.bank.accounts;
 
 public class AccountDeposit extends Account{
     public AccountDeposit(AccountType accountType, Long bankID, Long id, String clientID, double balance, boolean withdrawAllowed) {

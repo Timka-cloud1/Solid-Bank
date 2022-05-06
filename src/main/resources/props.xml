@@ -4,30 +4,29 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="memoryAccountDAO" class="com.timka.solid.bank.MemoryAccountDAO">
+    <bean id="memoryAccountDAO" class="com.timka.solid.bank.inmemory.MemoryAccountDAO">
     </bean>
-    <bean id="accountDAO" class="com.timka.solid.bank.AccountDAO" abstract="true">
+    <bean id="accountDAO" class="com.timka.solid.bank.inmemory.AccountDAO" abstract="true">
     </bean>
-    <bean id="accountListingService" class="com.timka.solid.bank.AccountListingService" abstract="true">
+    <bean id="accountListingService" class="com.timka.solid.bank.listingAcc.AccountListingService" abstract="true">
     </bean>
-    <bean id="accountListingServiceImpl" class="com.timka.solid.bank.AccountListingServiceImpl">
+    <bean id="accountListingServiceImpl" class="com.timka.solid.bank.listingAcc.AccountListingServiceImpl">
         <constructor-arg ref="memoryAccountDAO"/>
     </bean>
-    <bean id="accountCreationService" class="com.timka.solid.bank.AccountCreationService" abstract="true">
+    <bean id="accountCreationService" class="com.timka.solid.bank.creationAcc.AccountCreationService" abstract="true">
     </bean>
-    <bean id="accountCreationServiceImpl" class="com.timka.solid.bank.AccountCreationServiceImpl">
+    <bean id="accountCreationServiceImpl" class="com.timka.solid.bank.creationAcc.AccountCreationServiceImpl">
         <constructor-arg ref="memoryAccountDAO"/>
     </bean>
     <bean id="bankCore" class="com.timka.solid.bank.BankCore">
         <constructor-arg ref="accountCreationServiceImpl"/>
     </bean>
-    <bean id="createAccountOperationUI" class="com.timka.solid.bank.CreateAccountOperationUI" abstract="true"/>
+    <bean id="createAccountOperationUI" class="com.timka.solid.bank.creationAcc.CreateAccountOperationUI" abstract="true"/>
     <bean id="cLIUI" class="com.timka.solid.bank.CLIUI" abstract="true"/>
 
 
 
     <bean id="myCLI" class="com.timka.solid.bank.MyCLI">
-
     </bean>
     <bean id="accountBasicCLI" class="com.timka.solid.bank.AccountBasicCLI">
         <constructor-arg ref="myCLI"/>
