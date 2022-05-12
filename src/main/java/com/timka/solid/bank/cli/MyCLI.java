@@ -22,10 +22,6 @@ public class MyCLI implements CLIUI {
     public double requestClientAmount() {
         System.out.println("Type amount of money");
         String amountString = scanner.nextLine();
-        if(amountString.startsWith("-0")) {
-            System.out.println("Wrong! Invalid arguments");
-            amountString = "0";
-        }
         double amount = 0.0;
 
         try {

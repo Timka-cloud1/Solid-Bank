@@ -32,13 +32,11 @@ public class TransactionDepositCLI {
             return;
         }
         double amount = withdrawDepositOperationCLIUI.requestClientAmount();
-        if(amount == 0) {
-            return;
-        }
-        if(amount < 0) {
+        if(amount <= 0) {
             System.out.println("Amount should be more than 0");
             return;
         }
+
         transactionDeposit.execute(clientAccount, amount);
         System.out.printf("%.2f$ transferred to %s account\n", amount, accountID);
 
