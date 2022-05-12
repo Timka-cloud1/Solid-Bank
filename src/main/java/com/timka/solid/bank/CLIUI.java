@@ -1,6 +1,8 @@
 package com.timka.solid.bank;
 
-import com.timka.solid.bank.creationAcc.CreateAccountOperationUI;
+import com.timka.solid.bank.creationAccountService.CreateAccountOperationUI;
+import org.springframework.stereotype.Component;
 
-public interface CLIUI extends CreateAccountOperationUI {
+@Component
+public interface CLIUI extends CreateAccountOperationUI, WithdrawDepositOperationCLIUI {
 }

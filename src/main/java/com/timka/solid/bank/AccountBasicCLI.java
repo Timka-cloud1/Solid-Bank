@@ -2,21 +2,23 @@ package com.timka.solid.bank;
 
 import com.timka.solid.bank.accounts.Account;
 import com.timka.solid.bank.accounts.AccountType;
-import com.timka.solid.bank.creationAcc.CreateAccountOperationUI;
-import com.timka.solid.bank.listingAcc.AccountListingService;
+import com.timka.solid.bank.creationAccountService.CreateAccountOperationUI;
+import com.timka.solid.bank.listingAccountService.AccountListingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-//@Component
+@Component
 public class AccountBasicCLI {
     private CreateAccountOperationUI createAccountOperationUI;
     private BankCore bankCore;
 
     private AccountListingService accountListing;
 
-//    @Autowired
-    public AccountBasicCLI(@Qualifier(value = "myCLI") CreateAccountOperationUI createAccountOperationUI, BankCore bankCore, AccountListingService accountListing) {
+   @Autowired
+    public AccountBasicCLI(CreateAccountOperationUI createAccountOperationUI, BankCore bankCore, AccountListingService accountListing) {
         this.createAccountOperationUI = createAccountOperationUI;
         this.bankCore = bankCore;
         this.accountListing = accountListing;

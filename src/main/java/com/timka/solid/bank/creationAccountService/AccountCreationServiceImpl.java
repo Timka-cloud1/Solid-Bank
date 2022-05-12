@@ -1,13 +1,16 @@
-package com.timka.solid.bank.creationAcc;
+package com.timka.solid.bank.creationAccountService;
 
 import com.timka.solid.bank.accounts.*;
-import com.timka.solid.bank.inmemory.AccountDAO;
+import com.timka.solid.bank.dao.AccountDAO;
+import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-//@Component
+@Service
 public class AccountCreationServiceImpl implements AccountCreationService {
     private AccountDAO accountDAO;
 
-    //@Autowired
+    @Autowired
     public AccountCreationServiceImpl(AccountDAO accountDAO) {
         this.accountDAO = accountDAO;
     }
@@ -19,7 +22,7 @@ public class AccountCreationServiceImpl implements AccountCreationService {
         if (accountType.toString().equals("CHECKING")) {
             account = new CheckingAccount(accountType, bankID, accountID, clientID, 0.0, true);
         } else if (accountType.toString().equals("FIXED")) {
-            account = new FixedAccount(accountType, bankID, accountID, clientID, 0.0, true);
+            account = new FixedAccount(accountType, bankID, accountID, clientID, 0.0, false);
         } else if (accountType.toString().equals("SAVING")) {
             account = new SavingAccount(accountType, bankID, accountID, clientID, 0.0, true);
         }

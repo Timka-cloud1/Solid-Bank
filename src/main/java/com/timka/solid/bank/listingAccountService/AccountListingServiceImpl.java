@@ -1,29 +1,31 @@
-package com.timka.solid.bank.listingAcc;
+package com.timka.solid.bank.listingAccountService;
 
-import com.timka.solid.bank.inmemory.AccountDAO;
+import com.timka.solid.bank.dao.AccountDAO;
 import com.timka.solid.bank.accounts.Account;
 import com.timka.solid.bank.accounts.AccountType;
 import com.timka.solid.bank.accounts.AccountWithdraw;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-//@Component
+@Service
 public class AccountListingServiceImpl implements AccountListingService{
     private AccountDAO accountDAO;
 
-    // @Autowired
+    @Autowired
     public AccountListingServiceImpl(AccountDAO accountDAO) {
         this.accountDAO = accountDAO;
     }
 
     @Override
     public Account getClientAccount(String clientID, String accountID) {
-        throw new UnsupportedOperationException();
+        return accountDAO.getClientAccount(clientID, accountID);
     }
 
     @Override
     public AccountWithdraw getClientWithdrawAccount(String clientID, String accountID) {
-        throw new UnsupportedOperationException();
+        return accountDAO.getClientWithdrawAccount(clientID, accountID);
     }
 
     @Override

@@ -1,22 +1,24 @@
 package com.timka.solid.bank;
 
 import com.timka.solid.bank.accounts.AccountType;
-import com.timka.solid.bank.creationAcc.AccountCreationService;
+import com.timka.solid.bank.creationAccountService.AccountCreationService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class BankCore {
     private static long id = 1;
     private long lastAccountNumber = 1;
-    private AccountCreationService accountCreation;
+    private AccountCreationService accountCreationService;
 
-    //  @Autowired
-    public BankCore(AccountCreationService accountCreation) {
-        this.accountCreation = accountCreation;
+    @Autowired
+    public BankCore(AccountCreationService accountCreationService) {
+        this.accountCreationService = accountCreationService;
     }
 
     public void createNewAccount(AccountType accountType, String clientID) {
 
-        accountCreation.create(accountType, id, clientID, lastAccountNumber);
+        accountCreationService.create(accountType, id, clientID, lastAccountNumber);
         incrementLastAccountNumber();
     }
 

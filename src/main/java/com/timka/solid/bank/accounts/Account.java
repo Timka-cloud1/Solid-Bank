@@ -60,8 +60,12 @@ public abstract class Account {
         return balance;
     }
 
+    public String getAccountID() {
+        return String.format("%03d%06d", bankID, id);
+    }
+
     @Override
     public String toString() {
-        return String.format("Account{type=%s,id='%03d%06d', clientID='%s', balance=0.0}", accountType, bankID, id, clientID);
+        return String.format("Account{type=%s,id='%03d%06d', clientID='%s', balance=%.2f}", accountType, bankID, id, clientID, balance);
     }
 }

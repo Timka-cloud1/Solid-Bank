@@ -1,16 +1,17 @@
-package com.timka.solid.bank.inmemory;
+package com.timka.solid.bank.dao;
 
 import com.timka.solid.bank.accounts.Account;
 import com.timka.solid.bank.accounts.AccountType;
 import com.timka.solid.bank.accounts.AccountWithdraw;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Repository
 public class MemoryAccountDAO implements AccountDAO{
-    private List<Account> accountList = new ArrayList<>();
+    private List<Account> accountList;
 
     @PostConstruct
     private void init() {
@@ -29,25 +30,40 @@ public class MemoryAccountDAO implements AccountDAO{
     }
 
     @Override
-    public void updateAccount(Account account) {
-        throw new UnsupportedOperationException();
+    public void updateAccount(Account account, double amount) {
+        account.setBalance(account.getBalance() + amount);
+
     }
 
     @Override
     public List<Account> getClientAccountsByType(String clientID, AccountType accountType) {
         throw new UnsupportedOperationException();
-       // return null;
     }
 
     @Override
     public AccountWithdraw getClientWithdrawAccount(String clientID, String accountID) {
-        throw new UnsupportedOperationException();
-      //  return null;
+        for(Account acc : accountList) {
+            if(acc.getClientID().equals(clientID) && acc.getAccountID().equals(accountID)) {
+                if(acc.isWithdrawAllowed()) {
+                    return (AccountWithdraw) acc;
+                } else {
+                    System.out.println("you cannot withdraw money from a fixed account");
+                    return null;
+                }
+            }
+
+        }
+        System.out.println("account number not found!");
+        return null;
     }
 
     @Override
     public Account getClientAccount(String clientID, String accountID) {
-        throw new UnsupportedOperationException();
-   //     return null;
+        for(Account acc : accountList) {
+            if(acc.getClientID().equals(clientID) && acc.getAccountID().equals(accountID)) {
+                return acc;
+            }
+        }
+        return null;
     }
 }
