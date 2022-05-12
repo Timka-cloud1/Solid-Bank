@@ -1,16 +1,5 @@
 package com.timka.solid.bank.configs;
 
-import com.timka.solid.bank.AccountBasicCLI;
-import com.timka.solid.bank.BankCore;
-import com.timka.solid.bank.CLIUI;
-import com.timka.solid.bank.MyCLI;
-import com.timka.solid.bank.creationAccountService.AccountCreationService;
-import com.timka.solid.bank.creationAccountService.AccountCreationServiceImpl;
-import com.timka.solid.bank.creationAccountService.CreateAccountOperationUI;
-import com.timka.solid.bank.dao.AccountDAO;
-import com.timka.solid.bank.dao.MemoryAccountDAO;
-import com.timka.solid.bank.listingAccountService.AccountListingService;
-import com.timka.solid.bank.listingAccountService.AccountListingServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

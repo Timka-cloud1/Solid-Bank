@@ -1,7 +1,7 @@
 package com.timka.solid.bank;
 
 import com.timka.solid.bank.accounts.AccountType;
-import com.timka.solid.bank.creationAccountService.AccountCreationService;
+import com.timka.solid.bank.services.AccountCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

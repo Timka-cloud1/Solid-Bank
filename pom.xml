@@ -80,7 +80,7 @@
 							<archive>
 								<manifest>
 									<mainClass>
-										com.timka.solid.bank.SpringProjectApplication
+										com.timka.solid.bank.DemoApplication
 									</mainClass>
 								</manifest>
 							</archive>
