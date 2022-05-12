@@ -35,20 +35,18 @@ public class DemoApplication implements CommandLineRunner {
         System.out.println("Welcome to CLI bank service");
         System.out.println("Enter operation number: ");
         System.out.print(helpMessage);
-        while(running){
+        while (running) {
             String cmd = myCLI.getScanner().nextLine();
-            switch(cmd){
+            switch (cmd) {
 
                 case "1":
                     accountBasicCLI.getAccounts(clientID);
                     break;
-
                 case "2":
                     System.out.println("Choose account type\n" +
                             "[CHECKING, SAVING, FIXED]");
                     accountBasicCLI.createAccountRequest(clientID);
                     break;
-
                 case "3":
                     transactionDepositCLI.depositMoney(clientID);
                     break;

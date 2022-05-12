@@ -40,6 +40,7 @@ public class MemoryAccountDAO implements AccountDAO{
         throw new UnsupportedOperationException();
     }
 
+    // отдает аккаунт для снятие денег
     @Override
     public AccountWithdraw getClientWithdrawAccount(String clientID, String accountID) {
         for(Account acc : accountList) {
@@ -57,6 +58,7 @@ public class MemoryAccountDAO implements AccountDAO{
         return null;
     }
 
+    // отдает аккаунт для пополнение
     @Override
     public Account getClientAccount(String clientID, String accountID) {
         for(Account acc : accountList) {

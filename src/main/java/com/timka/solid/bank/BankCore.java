@@ -16,6 +16,7 @@ public class BankCore {
         this.accountCreationService = accountCreationService;
     }
 
+    //создает аккаунт
     public void createNewAccount(AccountType accountType, String clientID) {
 
         accountCreationService.create(accountType, id, clientID, lastAccountNumber);

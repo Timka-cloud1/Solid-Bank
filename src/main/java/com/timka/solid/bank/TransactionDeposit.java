@@ -14,12 +14,14 @@ public class TransactionDeposit {
     private AccountDepositService accountDepositService;
     private TransactionDAO transactionDAO;
 
+
     @Autowired
     public TransactionDeposit(AccountDepositService accountDepositService, TransactionDAO transactionDAO) {
         this.accountDepositService = accountDepositService;
         this.transactionDAO = transactionDAO;
     }
 
+    // позволяет пополнять счет аккаунта
     public void execute(Account account, double amount) {
         accountDepositService.deposit(amount, account);
         Transaction transaction = new Transaction(new Date().toString(), "refill", account.getAccountID(), amount);

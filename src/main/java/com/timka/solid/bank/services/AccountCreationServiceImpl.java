@@ -14,6 +14,7 @@ public class AccountCreationServiceImpl implements AccountCreationService {
         this.accountDAO = accountDAO;
     }
 
+    // создает аккаунт нужного типа
     @Override
     public void create(AccountType accountType, long bankID, String clientID, long accountID) {
 

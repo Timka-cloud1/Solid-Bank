@@ -18,7 +18,7 @@ public class MyCLI implements CLIUI {
         this.scanner = scanner;
     }
 
-
+    // запрашивает сумму
     public double requestClientAmount() {
         System.out.println("Type amount of money");
         String amountString = scanner.nextLine();
@@ -32,6 +32,7 @@ public class MyCLI implements CLIUI {
         return amount;
     }
 
+    // запрашивает номер аккаунта
     public String requestClientAccountNumber() {
         System.out.println("Type account ID");
         return scanner.nextLine();
@@ -39,6 +40,7 @@ public class MyCLI implements CLIUI {
 
     }
 
+    // отдает переданный тип
     public AccountType requestAccountType() {
         String type = scanner.nextLine();
         if (!AccountType.CHECKING.toString().equals(type) && !AccountType.SAVING.toString().equals(type) && !AccountType.FIXED.toString().equals(type)) {

@@ -20,6 +20,7 @@ public class TransactionWithdraw {
         this.transactionDAO = transactionDAO;
     }
 
+    // позволяет снимать деньги со счета(кроме Fixed аккаунтов)
     public void execute(AccountWithdraw accountWithdraw, double amount) {
         accountWithdrawService.withdraw(amount, accountWithdraw);
         Transaction transaction = new Transaction(new Date().toString(),"withdrawal", accountWithdraw.getAccountID(), amount);
