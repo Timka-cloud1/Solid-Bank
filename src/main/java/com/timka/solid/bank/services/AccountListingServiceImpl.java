@@ -20,17 +20,18 @@ public class AccountListingServiceImpl implements AccountListingService{
 
     @Override
     public Account getClientAccount(String clientID, String accountID) {
-        return accountDAO.getClientAccount(clientID, accountID);
+        return accountDAO.findAccountByClientIDAndAccountFullId(clientID, accountID);
     }
 
     @Override
     public AccountWithdraw getClientWithdrawAccount(String clientID, String accountID) {
         return accountDAO.getClientWithdrawAccount(clientID, accountID);
+
     }
 
     @Override
     public List<Account> getClientAccounts(String clientID) {
-        return accountDAO.getClientAccounts(clientID);
+        return accountDAO.findAccountsByClientID(clientID);
     }
 
     @Override

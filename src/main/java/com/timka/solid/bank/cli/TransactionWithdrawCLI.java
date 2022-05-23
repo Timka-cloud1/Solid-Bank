@@ -24,6 +24,7 @@ public class TransactionWithdrawCLI {
         String accountID = withdrawDepositOperationCLIUI.requestClientAccountNumber();
         AccountWithdraw clientAccount = accountListing.getClientWithdrawAccount(clientID, accountID);
         if(clientAccount == null) {
+            System.out.println("you cannot withdraw money from a fixed account or account doesn't exist");
             return;
         }
         double amount = withdrawDepositOperationCLIUI.requestClientAmount();
@@ -34,12 +35,8 @@ public class TransactionWithdrawCLI {
             System.out.println("Amount should be more than 0");
             return;
         }
-        if(clientAccount.getBalance() < amount) {
-            System.out.println("there are not enough funds in your account");
-            return;
-        }
         transactionWithdraw.execute(clientAccount, amount);
-        System.out.printf("%.2f$ transferred from %s account\n", amount, accountID);
+
 
     }
 }

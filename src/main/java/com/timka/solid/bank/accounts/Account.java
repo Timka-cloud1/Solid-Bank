@@ -1,71 +1,42 @@
 package com.timka.solid.bank.accounts;
 
-public abstract class Account {
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-    private AccountType accountType;
-    private Long id;
+
+@Data
+@Builder
+@AllArgsConstructor
+public class Account {
+    @Id
+    //@Column("account_full_id")
+    private String accountFullId;
+   // @Column("account_type")
+    private String accountType;
+   // @Column("bank_id")
     private Long bankID;
+   // @Column("client_id")
     private String clientID;
+    //@Column("balance")
     private double balance;
+    //@Column("withdraw_allowed")
     private boolean withdrawAllowed;
 
-
-    public Account(AccountType accountType, Long bankID, Long id, String clientID, double balance, boolean withdrawAllowed) {
-        this.accountType = accountType;
-        this.bankID = bankID;
-        this.id = id;
-        this.clientID = clientID;
-        this.balance = balance;
-        this.withdrawAllowed = withdrawAllowed;
-    }
-
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setAccountType(AccountType accountType) {
-        this.accountType = accountType;
-    }
-
-    public AccountType getAccountType() {
-        return accountType;
-    }
-
-    public void setWithdrawAllowed(boolean withdrawAllowed) {
-        this.withdrawAllowed = withdrawAllowed;
-    }
-
-    public boolean isWithdrawAllowed() {
-        return withdrawAllowed;
-    }
-
-    public void setClientID(String clientID) {
-        this.clientID = clientID;
-    }
-
-    public String getClientID() {
-        return clientID;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
-    public String getAccountID() {
-        return String.format("%03d%06d", bankID, id);
-    }
+//    public Account(String accountType, Long bankID, String clientID, String accountFullId, double balance, boolean withdrawAllowed) {
+//        this.accountType = accountType;
+//        this.bankID = bankID;
+//        this.clientID = clientID;
+//        this.accountFullId = accountFullId;
+//        this.balance = balance;
+//        this.withdrawAllowed = withdrawAllowed;
+//    }
 
     @Override
     public String toString() {
-        return String.format("Account{type=%s,id='%03d%06d', clientID='%s', balance=%.2f}", accountType, bankID, id, clientID, balance);
+        return String.format("Account{type=%s,id='%s', clientID='%s', balance=%.2f}", accountType, accountFullId, clientID, balance);
     }
 }

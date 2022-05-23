@@ -1,9 +1,16 @@
 package com.timka.solid.bank.accounts;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+
+
 public class AccountDeposit extends Account{
-    public AccountDeposit(AccountType accountType, Long bankID, Long id, String clientID, double balance, boolean withdrawAllowed) {
-        super(accountType, bankID, id, clientID, balance, withdrawAllowed);
+    public AccountDeposit(String accountFullId, String accountType, Long bankID, String clientID, double balance, boolean withdrawAllowed) {
+        super(accountFullId, accountType, bankID, clientID, balance, withdrawAllowed);
     }
+
+
     /**
      * можно только снимать.
      * @param accountType

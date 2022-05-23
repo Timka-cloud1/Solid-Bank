@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AccountCreationServiceImpl implements AccountCreationService {
-    private AccountDAO accountDAO;
+    private final AccountDAO accountDAO;
 
     @Autowired
     public AccountCreationServiceImpl(AccountDAO accountDAO) {
@@ -20,12 +20,20 @@ public class AccountCreationServiceImpl implements AccountCreationService {
 
         Account account = null;
         if (accountType.toString().equals("CHECKING")) {
-            account = new CheckingAccount(accountType, bankID, accountID, clientID, 0.0, true);
+            account = new CheckingAccount(String.format("%03d%06d", bankID, accountID),"CHECKING", bankID,  clientID ,0.0, true);
         } else if (accountType.toString().equals("FIXED")) {
-            account = new FixedAccount(accountType, bankID, accountID, clientID, 0.0, false);
+            account = new FixedAccount(String.format("%03d%06d", bankID, accountID),"FIXED", bankID, clientID, 0.0, false);
         } else if (accountType.toString().equals("SAVING")) {
-            account = new SavingAccount(accountType, bankID, accountID, clientID, 0.0, true);
+            account = new SavingAccount(String.format("%03d%06d", bankID, accountID),"SAVING", bankID, clientID, 0.0, true);
         }
-        accountDAO.createNewAccount(account);
+
+        if (account == null) {
+            System.out.println("ERROR: Wrong type of account");
+           return;
+        }
+
+        accountDAO.createNewAccount(account.getAccountFullId(), account.getAccountType(), account.getBankID(), account.getClientID(), account.getBalance(), account.isWithdrawAllowed());
+        System.out.println("Bank account created");
+
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class BankCore {
     private static long id = 1;
     private long lastAccountNumber = 1;
-    private AccountCreationService accountCreationService;
+    private final AccountCreationService accountCreationService;
 
     @Autowired
     public BankCore(AccountCreationService accountCreationService) {

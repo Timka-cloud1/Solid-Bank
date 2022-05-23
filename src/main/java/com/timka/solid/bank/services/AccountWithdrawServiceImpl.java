@@ -16,7 +16,15 @@ public class AccountWithdrawServiceImpl implements AccountWithdrawService {
 
 
     @Override
-    public void withdraw(double amount, AccountWithdraw account) {
-        accountDAO.updateAccount(account, (-1 * amount));
+    public boolean withdraw(double amount, AccountWithdraw account) {
+        double balance = accountDAO.getBalance(account.getAccountFullId());
+        if(amount > balance) {
+            System.out.println("there are not enough funds in your account");
+            return false;
+        }
+        balance -= amount;
+        accountDAO.updateAccount(account.getAccountFullId(), balance);
+        System.out.printf("%.2f$ transferred from %s account\n", amount, account.getAccountFullId());
+        return true;
     }
 }

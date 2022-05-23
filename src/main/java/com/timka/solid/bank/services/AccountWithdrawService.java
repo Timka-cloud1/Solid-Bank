@@ -6,5 +6,5 @@ import org.springframework.stereotype.Service;
 @Service
 // снимать деньги
 public interface AccountWithdrawService {
-    void withdraw(double amount, AccountWithdraw account);
+    boolean withdraw(double amount, AccountWithdraw account);
 }

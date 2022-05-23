@@ -17,6 +17,8 @@ public class AccountDepositServiceImpl implements AccountDepositService{
 
     @Override
     public void deposit(double amount, Account account) {
-        accountDAO.updateAccount(account, amount);
+        double balance = accountDAO.getBalance(account.getAccountFullId());
+        balance += amount;
+        accountDAO.updateAccount(account.getAccountFullId(), balance);
     }
 }

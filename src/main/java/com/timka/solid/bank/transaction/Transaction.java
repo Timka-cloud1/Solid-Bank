@@ -1,11 +1,15 @@
 package com.timka.solid.bank.transaction;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 
 import java.util.Date;
 @Data
+
 public class Transaction {
+    @Id
     private long id;
     private String date;
     private String accountNumber;

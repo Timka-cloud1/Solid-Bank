@@ -4,7 +4,8 @@ import com.timka.solid.bank.cli.AccountBasicCLI;
 import com.timka.solid.bank.cli.MyCLI;
 import com.timka.solid.bank.cli.TransactionDepositCLI;
 import com.timka.solid.bank.cli.TransactionWithdrawCLI;
-import com.timka.solid.bank.dao.MemoryTransactionDAO;
+
+import com.timka.solid.bank.dao.TransactionDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -30,7 +31,7 @@ public class DemoApplication implements CommandLineRunner {
         AccountBasicCLI accountBasicCLI = context.getBean(AccountBasicCLI.class);
         TransactionDepositCLI transactionDepositCLI = context.getBean(TransactionDepositCLI.class);
         TransactionWithdrawCLI transactionWithdrawCLI = context.getBean(TransactionWithdrawCLI.class);
-        MemoryTransactionDAO memoryTransactionDAO = context.getBean(MemoryTransactionDAO.class);
+        TransactionDAO transactionDAO = context.getBean(TransactionDAO.class);
         String helpMessage = "1 - show accounts\n2 - create account\n3 - deposit\n4 - withdraw\n5 - transfer\n6 - this message\n7 - exit\n";
         System.out.println("Welcome to CLI bank service");
         System.out.println("Enter operation number: ");
@@ -55,7 +56,7 @@ public class DemoApplication implements CommandLineRunner {
                     transactionWithdrawCLI.withdrawMoney(clientID);
                     break;
                 case "5":
-                    System.out.println(memoryTransactionDAO.getTransactions());
+                    System.out.println(transactionDAO.findAll());
                     break;
                 case "6":
                     System.out.printf(helpMessage);

@@ -22,9 +22,10 @@ public class TransactionWithdraw {
 
     // позволяет снимать деньги со счета(кроме Fixed аккаунтов)
     public void execute(AccountWithdraw accountWithdraw, double amount) {
-        accountWithdrawService.withdraw(amount, accountWithdraw);
-        Transaction transaction = new Transaction(new Date().toString(),"withdrawal", accountWithdraw.getAccountID(), amount);
-        transactionDAO.addTransaction(transaction);
+        if(accountWithdrawService.withdraw(amount, accountWithdraw)) { // если снимают больше чем есть на счету то не записывать это в транзакцию
+            Transaction transaction = new Transaction(new Date().toString(), "withdrawal", accountWithdraw.getAccountFullId(), amount);
+            transactionDAO.addTransaction(transaction.getDate(), transaction.getTypeOfOperation(), transaction.getAccountNumber(), transaction.getAmount());
+        }
     }
 
 

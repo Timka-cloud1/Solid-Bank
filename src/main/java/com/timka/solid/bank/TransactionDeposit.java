@@ -24,8 +24,8 @@ public class TransactionDeposit {
     // позволяет пополнять счет аккаунта
     public void execute(Account account, double amount) {
         accountDepositService.deposit(amount, account);
-        Transaction transaction = new Transaction(new Date().toString(), "refill", account.getAccountID(), amount);
-        transactionDAO.addTransaction(transaction);
+        Transaction transaction = new Transaction(new Date().toString(), "refill", account.getAccountFullId(), amount);
+        transactionDAO.addTransaction(transaction.getDate(), transaction.getTypeOfOperation(), transaction.getAccountNumber(), transaction.getAmount());
     }
 
 
