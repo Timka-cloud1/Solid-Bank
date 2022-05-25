@@ -28,8 +28,6 @@ public class TransactionWithdraw {
         }
     }
 
-    //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
-
 
 
 }
