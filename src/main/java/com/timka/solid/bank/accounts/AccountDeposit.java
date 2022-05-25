@@ -6,8 +6,8 @@ import lombok.Data;
 
 
 public class AccountDeposit extends Account{
-    public AccountDeposit(String accountFullId, String accountType, Long bankID, String clientID, double balance, boolean withdrawAllowed) {
-        super(accountFullId, accountType, bankID, clientID, balance, withdrawAllowed);
+    public AccountDeposit(String accountType, Long bankID, String clientID, double balance, boolean withdrawAllowed) {
+        super(accountType, bankID, clientID, balance, withdrawAllowed);
     }
 
 
